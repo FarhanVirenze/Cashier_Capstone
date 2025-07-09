@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                      // Output JS: ES6
+    "module": "ESNext",                   // Agar bisa pakai import/export modern
+    "moduleResolution": "node",
+    "lib": ["DOM", "ESNext"],             // DOM + modern ES features
+    "jsx": "react-jsx",                   // Ganti ke "preserve" jika pakai Vue
+    "esModuleInterop": true,             // Agar bisa import module default
+    "skipLibCheck": true,                // Hindari error dari .d.ts (seperti vendor)
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "outDir": "public/js"                   // Folder hasil compile
+  },
+  "include": ["resources/js/**/*"],
+  "exclude": ["node_modules", "vendor"]
+}
