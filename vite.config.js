@@ -7,8 +7,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/js/scanner.js',
-                'resources/js/accessibility-widget.ts' // sudah benar
+                'resources/js/scanner.js'
             ],
             refresh: true,
         }),

@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Load accessibility widget -->
+    <script src="{{ asset('assets/accessibility-widget.js') }}" defer></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -16,39 +19,41 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     @yield('scripts')
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @include('layouts.navigation')
+    <div class="content-wrapper"> <!-- ✅ Sekarang di posisi benar -->
 
-        <!-- Page Heading -->
-        @isset($header)
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            @include('layouts.navigation')
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+            <!-- Page Heading -->
+            @isset($header)
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
+
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+
     </div>
 
-    <!-- Load Accessibility Widget -->
-<script src="{{ asset('assets/accessibility-widget.js') }}" defer></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const widget = document.createElement('accessibility-widget');
-        document.body.appendChild(widget);
-    });
-</script>
-
+    <!-- Tambahkan elemen secara dinamis jika belum muncul -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const exists = document.querySelector("accessibility-widget");
+            if (!exists) {
+                const widget = document.createElement("accessibility-widget");
+                document.body.appendChild(widget);
+            }
+        });
+    </script>
 </body>
-
 </html>
